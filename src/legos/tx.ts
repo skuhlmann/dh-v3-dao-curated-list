@@ -22,8 +22,8 @@ export const TX = {
     JSONDetails: {
       type: "JSONDetails",
       jsonSchema: {
-        title: `.formValues.title`,
-        description: `.formValues.description`,
+        title: { type: "static", value: "Verified App List Submission" },
+        description: `.formValues.title`,
         contentURI: `.formValues.link`,
         contentURIType: { type: "static", value: "url" },
         proposalType: { type: "static", value: ProposalTypeIds.Signal },

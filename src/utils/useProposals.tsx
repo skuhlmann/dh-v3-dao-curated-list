@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 
 import { ValidNetwork, Keychain } from "@daohaus/keychain-utils";
+import { nowInSeconds } from "@daohaus/utils";
 import { listProposals, MolochV3Proposal } from "@daohaus/moloch-v3-data";
 
 const graphApiKeys = { "0x1": import.meta.env.VITE_GRAPH_API_KEY_MAINNET };
@@ -16,7 +17,11 @@ const fetchProposals = async ({
     return listProposals({
       networkId: chainId,
       graphApiKeys: graphApiKeys,
-      filter: { dao: daoId },
+      filter: {
+        dao: daoId,
+        title: "Verified App List Submission",
+        graceEnds_gte: nowInSeconds().toFixed(),
+      },
       paging: { pageSize: 100, offset: 0 },
     });
   } catch (error: any) {
