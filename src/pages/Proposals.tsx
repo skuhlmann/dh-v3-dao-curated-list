@@ -1,25 +1,19 @@
 import { H2, Link, ParMd, SingleColumnLayout } from "@daohaus/ui";
 import styled from "styled-components";
-import { DAOCHAIN, DAOID } from "../utils/constants";
+import { HausAnimated } from "../components/HausAnimated";
 import { useRecords } from "../utils/useRecords";
 
 const LinkBox = styled.div`
   display: flex;
-  flex-direction: column;
   width: 50%;
   justify-content: space-between;
-  align-items: center;
 `;
 
-export const Home = () => {
-  const { items } = useRecords({
-    daoId: DAOID,
-    chainId: DAOCHAIN,
-  });
-
+export const Proposals = () => {
   return (
     <SingleColumnLayout>
-      <H2>Free Ryder DAO's Favorite Apps</H2>
+      <H2>DAOhaus is your haus</H2>
+      <HausAnimated />
       <ParMd style={{ marginBottom: "2.4rem" }}>
         Get started by editing src/pages/Home.tsx
       </ParMd>

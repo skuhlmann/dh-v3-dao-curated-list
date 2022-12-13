@@ -1,7 +1,8 @@
-import { DHLayout } from '@daohaus/connect';
-import { Routes as Router, Route, useLocation } from 'react-router-dom';
-import { FormTest } from './pages/FormTest';
-import { Home } from './pages/Home';
+import { DHLayout } from "@daohaus/connect";
+import { Routes as Router, Route, useLocation } from "react-router-dom";
+import { Propose } from "./pages/Propose";
+import { Home } from "./pages/Home";
+import { Proposals } from "./pages/Proposals";
 
 export const Routes = () => {
   const { pathname } = useLocation();
@@ -9,13 +10,15 @@ export const Routes = () => {
     <DHLayout
       pathname={pathname}
       navLinks={[
-        { label: 'Home', href: '/' },
-        { label: 'Form Test', href: '/formtest' },
+        { label: "Home", href: "/" },
+        { label: "Submit Your App", href: "/submit" },
+        { label: "Submissions", href: "/submissions" },
       ]}
     >
       <Router>
         <Route path="/" element={<Home />} />
-        <Route path="/formtest" element={<FormTest />} />
+        <Route path="/submit" element={<Propose />} />
+        <Route path="/submissions" element={<Proposals />} />
       </Router>
     </DHLayout>
   );
