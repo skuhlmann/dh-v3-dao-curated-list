@@ -1,3 +1,4 @@
-export const DAOID = "0xc035dd7cda32ae73f0f306ed56658527aad47648";
-export const DAOCHAIN = "0x5";
-export const SAFEID = "0x36824793440d1ab326b9b5634418393d5f5e30a3";
+export const DAOID = "0x86ea37cb5ddde7649d919db7064cc9607af90142";
+export const DAOCHAIN = "0x64";
+export const SAFEID = "0x81941ca8c3a562655c584da2f6f0f00a55cc5882";
+export const PROP_OFFERING = "1000000000000000000";

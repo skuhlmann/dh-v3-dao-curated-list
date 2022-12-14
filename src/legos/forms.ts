@@ -10,11 +10,6 @@ export const FORM: Record<string, FormLego> = {
     requiredFields: { title: true, description: true, link: true },
     log: true,
     tx: TX.VERIFY_APP,
-    fields: [
-      FIELD.TITLE,
-      FIELD.DESCRIPTION,
-      FIELD.LINK,
-      // ...PROPOSAL_SETTINGS_FIELDS,
-    ],
+    fields: [FIELD.TITLE, FIELD.DESCRIPTION, FIELD.LINK, FIELD.PROP_OFFERING],
   },
 };

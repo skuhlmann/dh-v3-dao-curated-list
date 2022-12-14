@@ -1,6 +1,6 @@
-import { POSTER_TAGS } from "@daohaus/utils";
 import { buildMultiCallTX } from "@daohaus/tx-builder";
 import { CONTRACT } from "./contract";
+import { NestedArray, POSTER_TAGS, ValidArgType } from "@daohaus/utils";
 
 export enum ProposalTypeIds {
   Signal = "SIGNAL",
@@ -15,6 +15,13 @@ export enum ProposalTypeIds {
   WalletConnect = "WALLETCONNECT",
   VerifyApp = "VERIFY_APP",
 }
+
+const nestInArray = (arg: ValidArgType | ValidArgType[]): NestedArray => {
+  return {
+    type: "nestedArray",
+    args: Array.isArray(arg) ? arg : [arg],
+  };
+};
 
 export const TX = {
   VERIFY_APP: buildMultiCallTX({
@@ -37,14 +44,23 @@ export const TX = {
           {
             type: "JSONDetails",
             jsonSchema: {
-              title: `.formValues.title`,
               table: { type: "static", value: "verifiedAppSignal" },
+              daoId: `.daoId`,
               queryType: { type: "static", value: "list" },
+              title: `.formValues.title`,
               description: `.formValues.description`,
               link: `.formValues.link`,
             },
           },
           { type: "static", value: POSTER_TAGS.daoDatabaseProposal },
+        ],
+      },
+      {
+        contract: CONTRACT.CURRENT_DAO,
+        method: "mintLoot",
+        args: [
+          nestInArray(".connectedAddress"),
+          nestInArray({ type: "static", value: "1000000000000000000" }),
         ],
       },
     ],

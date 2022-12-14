@@ -1,14 +1,12 @@
 import { H2, Link, ParMd, SingleColumnLayout } from "@daohaus/ui";
 import styled from "styled-components";
+import { AppLink, AppObj } from "../components/AppLink.tsx";
 import { DAOCHAIN, DAOID } from "../utils/constants";
 import { useRecords } from "../utils/useRecords";
 
 const LinkBox = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 50%;
-  justify-content: space-between;
-  align-items: center;
+  margin-top: 3rem;
 `;
 
 export const Home = () => {
@@ -21,7 +19,9 @@ export const Home = () => {
 
   return (
     <SingleColumnLayout>
-      <H2>Warcamp DAO's Favorite Apps</H2>
+      <H2 style={{ marginBottom: "2.4rem" }}>
+        Curatooooor DAO's Favorite Apps
+      </H2>
       <ParMd style={{ marginBottom: "2.4rem" }}>
         A List of DAO apps curated by this{" "}
         <Link
@@ -32,17 +32,19 @@ export const Home = () => {
         </Link>
       </ParMd>
 
-      <ParMd style={{ marginBottom: "2.4rem" }}>
-        Submit your for consideration today!
+      <ParMd style={{ marginBottom: "2.4rem", width: "60%" }}>
+        Submit your app for consideration today! Submitting a proposal will cost
+        1 XDAI (for spam prevention). If your app is accepted you will recieve 1
+        loot share in the DAO!
       </ParMd>
+
       <LinkBox>
-        <Link href="https://github.com/HausDAO/monorepo" linkType="external">
-          Github
-        </Link>
-        <Link href="https://admin.daohaus.fun/" linkType="external">
-          Admin
-        </Link>
-        <Link href="/formtest">Example Form</Link>
+        {items &&
+          items.map((app) => {
+            return (
+              <AppLink appObj={app.parsedContent as AppObj} key={app.id} />
+            );
+          })}
       </LinkBox>
     </SingleColumnLayout>
   );

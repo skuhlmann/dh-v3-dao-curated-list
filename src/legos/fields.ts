@@ -20,4 +20,8 @@ export const FIELD: Record<string, FieldLego> = {
     placeholder: "http://",
     expectType: "url",
   },
+  PROP_OFFERING: {
+    id: "proposalOffering",
+    type: "proposalOffering",
+  },
 };

@@ -21,6 +21,7 @@ const ProposalBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
   width: 50%;
 `;
@@ -63,7 +64,7 @@ const OverviewBox = styled.div`
 const SubmittedContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 2rem;
+  margin: 2rem 0 3rem 0;
   .submitted-by {
     margin-right: 1rem;
   }
@@ -83,7 +84,10 @@ export const Proposals = () => {
 
   return (
     <SingleColumnLayout>
-      <H2>Active Submissions</H2>
+      <H2>
+        {items && items.length} Active Submission
+        {items && items.length > 1 && "s"}
+      </H2>
 
       <ProposalBox>
         {items &&
@@ -91,15 +95,9 @@ export const Proposals = () => {
             <ProposalCardContainer key={proposal.id} width="150rem">
               <OverviewBox>
                 <ParLg className="title">{proposal.title}</ParLg>
-                <ParMd className="description" color={theme.secondary.step11}>
-                  {charLimit(proposal.description, 145)}
-                </ParMd>
 
-                <Link
-                  href={`https://admin.daohaus.club/#/molochV3/${DAOCHAIN}/${DAOID}/proposals/${proposal.proposalId}`}
-                  linkType="external"
-                >
-                  View Details
+                <Link href={proposal.contentURI} linkType="external">
+                  {charLimit(proposal.description, 145)}
                 </Link>
 
                 <SubmittedContainer>
@@ -109,12 +107,15 @@ export const Proposals = () => {
                   >
                     Submitted by
                   </ParMd>
-                  <AddressDisplay
-                    address={proposal.createdBy}
-                    truncate
-                    explorerNetworkId={DAOCHAIN}
-                  />
+                  <AddressDisplay address={proposal.createdBy} truncate copy />
                 </SubmittedContainer>
+
+                <Link
+                  href={`https://admin.daohaus.club/#/molochV3/${DAOCHAIN}/${DAOID}/proposals/${proposal.proposalId}`}
+                  linkType="external"
+                >
+                  View Proposal in DAO
+                </Link>
               </OverviewBox>
             </ProposalCardContainer>
           ))}
@@ -124,7 +125,7 @@ export const Proposals = () => {
         href={`https://admin.daohaus.club/#/molochV3/${DAOCHAIN}/${DAOID}/proposals/31`}
         linkType="external"
       >
-        View All DAO Proposals
+        All DAO Proposals
       </Link>
     </SingleColumnLayout>
   );
