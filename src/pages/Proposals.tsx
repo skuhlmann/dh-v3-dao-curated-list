@@ -122,7 +122,7 @@ export const Proposals = () => {
       </ProposalBox>
 
       <Link
-        href={`https://admin.daohaus.club/#/molochV3/${DAOCHAIN}/${DAOID}/proposals/31`}
+        href={`https://admin.daohaus.club/#/molochV3/${DAOCHAIN}/${DAOID}/proposals`}
         linkType="external"
       >
         All DAO Proposals
