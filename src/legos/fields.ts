@@ -22,6 +22,7 @@ export const FIELD: Record<string, FieldLego> = {
   },
   PROP_OFFERING: {
     id: "proposalOffering",
+    // @ts-ignore
     type: "proposalOffering",
   },
 };
