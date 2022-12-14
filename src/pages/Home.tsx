@@ -20,12 +20,12 @@ export const Home = () => {
   return (
     <SingleColumnLayout>
       <H2 style={{ marginBottom: "2.4rem" }}>
-        Curatooooor DAO's Favorite Apps
+        Curatoooors DAO's Favorite Apps
       </H2>
       <ParMd style={{ marginBottom: "2.4rem" }}>
         A List of DAO apps curated by this{" "}
         <Link
-          href="https://admin.daohaus.club/#/molochv3/0x5/0xc035dd7cda32ae73f0f306ed56658527aad47648"
+          href={`https://admin.daohaus.club/#/molochv3/${DAOCHAIN}/${DAOID}`}
           linkType="external"
         >
           DAO
